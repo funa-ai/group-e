@@ -7,21 +7,22 @@ export default function MorphCompare() {
     const t = setInterval(() => setReveal((v) => !v), 3200);
     return () => clearInterval(t);
   }, []);
+
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <div className="morph">
       <div className="side-h" style={{ marginBottom: 16 }}>真贋判定 / 人間の目では判別不能</div>
       <div className="morph-frame">
         <div className="morph-pane real">
           <span className="label">REAL</span>
-          <div className="placeholder">
-            <span className="ph-text">[ 実写 · CMOS センサー ]</span>
-          </div>
+          <img src={`${baseUrl}images/real.jpg`} alt="本物の写真" className="morph-img" />
+          <span className="ph-text">[ 実写 · CMOS センサー ]</span>
         </div>
         <div className="morph-pane fake">
           <span className="label">{reveal ? 'AI_GEN' : '?'}</span>
-          <div className="placeholder">
-            <span className="ph-text">[ {reveal ? 'Diffusion v9.2' : '出所不明'} ]</span>
-          </div>
+          <img src={`${baseUrl}images/fake.jpg`} alt="AI生成画像" className="morph-img" />
+          <span className="ph-text">[ {reveal ? 'Diffusion v9.2' : '出所不明'} ]</span>
         </div>
       </div>
       <dl className="morph-readout">
