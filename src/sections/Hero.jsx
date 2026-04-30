@@ -1,7 +1,7 @@
 // src/sections/Hero.jsx
 import React from 'react';
 
-export default function Hero({ showGridBg }) {
+export default function Hero({ showGridBg = true }) {
   return (
     <header className="hero" id="top">
       {showGridBg && <div className="hero-grid-bg" />}
