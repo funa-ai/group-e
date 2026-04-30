@@ -25,7 +25,7 @@ export default function Threshold() {
               <div className="src">SRC / 国際法科学連盟 2026 ホワイトペーパー</div>
             </div>
             <div className="stat warn">
-              <div className="num">¥4.2<span className="sub">兆 / 年</span></div>
+              <div className="num">4.2<span className="sub">兆円 / 年</span></div>
               <div className="label">日本国内における、ディープフェイク起因の訴訟長期化・誤判決・信用毀損コストの推計値</div>
               <div className="src">SRC / 経産省 試算 R8</div>
             </div>
