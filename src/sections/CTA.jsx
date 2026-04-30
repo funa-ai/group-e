@@ -61,7 +61,7 @@ export default function CTA() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="contact-form" style={{ maxWidth: '600px' }}>
+        <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
             <label htmlFor="name">お名前 *</label>
             <input
