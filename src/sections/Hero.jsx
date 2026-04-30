@@ -8,8 +8,7 @@ export default function Hero({ showGridBg = true }) {
       <div className="hero-glow" />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <h1>
-          その<span className="strike">証拠</span>は、<br />
-          もう<span className="accent">真実</span>を<br />証明できない。
+          その<span className="strike">証拠</span>は、もう<span className="accent">真実</span>を証明できない。
         </h1>
         <p className="hero-sub">
           生成AIによるマルチモーダル偽造は、2026年に「人間の目で判別不能」のレベルに到達した。司法・行政・ジャーナリズムが依存してきたデジタル証拠の信頼基盤は、いま静かに崩壊している。<br />
