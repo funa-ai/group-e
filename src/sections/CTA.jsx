@@ -1,21 +1,121 @@
 // src/sections/CTA.jsx
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function CTA() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('https://formspree.io/f/xvgzwqvz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <section className="cta" id="cta">
       <div className="container">
-        <div className="eyebrow"><span className="dot" /> SERIES A · ¥1.2B 調達中</div>
-        <h2>「真実」を、<br />もう一度証明可能にする。</h2>
+        <h2>資料請求</h2>
         <p>
-          2026年は、デジタル証拠の信頼が再定義される最初の年です。私たちと共に AI 司法インフラを構築する投資家・パートナーを募集しています。
+          AI生成真贋 Proに関するお問い合わせ、資料請求は以下のフォームからお願いします。
         </p>
-        <div className="actions">
-          <a href="#" className="btn btn-primary">投資家向け資料を請求 <span className="arrow">→</span></a>
-          <a href="#" className="btn">技術ホワイトペーパー</a>
-          <a href="#" className="btn btn-ghost">パイロット参加申込</a>
-        </div>
-        <div className="cta-meta">CONTACT · partners@ai-veritas.jp · 東京都千代田区丸の内</div>
+
+        {submitted && (
+          <div className="form-success" style={{
+            padding: '16px 20px',
+            background: 'rgba(76, 175, 80, 0.1)',
+            border: '1px solid rgba(76, 175, 80, 0.3)',
+            borderRadius: '4px',
+            marginBottom: '24px',
+            color: '#4CAF50'
+          }}>
+            ✓ 送信完了。ありがとうございます。確認メールをお送りします。
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="contact-form" style={{ maxWidth: '600px' }}>
+          <div className="form-group">
+            <label htmlFor="name">お名前 *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="山田太郎"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">メールアドレス *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="your@example.com"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="company">会社名</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              placeholder="株式会社 〇〇"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="message">お問い合わせ内容</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="ご質問やご要望をお知らせください"
+              rows="5"
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            送信 <span className="arrow">→</span>
+          </button>
+        </form>
       </div>
     </section>
   );

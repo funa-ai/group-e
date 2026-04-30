@@ -7,7 +7,6 @@ export default function Hero({ showGridBg = true }) {
       {showGridBg && <div className="hero-grid-bg" />}
       <div className="hero-glow" />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="eyebrow"><span className="dot" /> Series A · 2026 Q3 Raising</div>
         <h1>
           その<span className="strike">証拠</span>は、<br />
           もう<span className="accent">真実</span>を<br />証明できない。
@@ -17,7 +16,7 @@ export default function Hero({ showGridBg = true }) {
           <strong style={{ color: 'var(--fg)' }}>AI生成真贋 Pro</strong>は、生成AI特有の痕跡を多角的に解析し、法廷で通用する「証拠能力スコア」と鑑定レポートを自動生成する、AI証拠鑑定エージェント SaaS です。
         </p>
         <div className="hero-actions">
-          <a href="#cta" className="btn btn-primary">投資家向け資料を請求 <span className="arrow">→</span></a>
+          <a href="#cta" className="btn btn-primary">資料請求 <span className="arrow">→</span></a>
           <a href="#product" className="btn">プロダクトを見る</a>
         </div>
 
